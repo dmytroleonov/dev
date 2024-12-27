@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+TOUCHPAD_ID=$(xinput list | grep -i "touchpad" | awk -F'id=' '{print $2}' | awk '{print $1}')
+[ -z "$TOUCHPAD_ID" ] && exit 1
+
+PROP_NAME="libinput Natural Scrolling Enabled"
+PROP_ID=$(xinput list-props "$TOUCHPAD_ID" | grep -i "$PROP_NAME" | awk -F'(' '{print $2}' | awk -F')' '{print $1}')
+
+[ -n "$PROP_ID" ] && xinput set-prop "$TOUCHPAD_ID" "$PROP_NAME" 1 || exit 1
+
