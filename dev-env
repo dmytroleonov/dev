@@ -1,0 +1,60 @@
+#!/usr/bin/env bash
+dry_run="0"
+
+if [ -z "$XDG_CONFIG_HOME" ]; then
+    echo "no xdg config home"
+    echo "using ~/.config"
+    XDG_CONFIG_HOME=$HOME/.config
+fi
+
+while [[ $# > 0 ]]; do
+    if [[ $1 == "--dry" ]]; then
+        dry_run="1"
+    fi
+    shift
+done
+
+log() {
+    if [[ $dry_run == "1" ]]; then
+        echo "[DRY_RUN]: $@"
+    else
+        echo "$@"
+    fi
+}
+
+execute() {
+    echo "execute $@"
+    if [[ $dry_run == "1" ]]; then
+	return
+    fi
+    "$@"
+}
+
+log "---------- dev-env ----------"
+
+copy_dir() {
+    from=$1
+    to=$2
+
+    pushd $from > /dev/null
+    dirs=$(find . -mindepth 1 -maxdepth 1 -type d)
+    for dir in $dirs; do
+        execute rm -rf $to/$dir
+        execute cp -r $dir $to/$dir
+    done
+    popd > /dev/null
+}
+
+copy_file() {
+    from=$1
+    to=$2
+    name=$(basename $from)
+
+    execute rm $to/$name
+    execute cp $from $to/$name
+}
+
+copy_dir env/.config $XDG_CONFIG_HOME
+
+copy_file env/.zsh_profile $HOME
+copy_file env/.zshrc $HOME
