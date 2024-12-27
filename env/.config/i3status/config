@@ -14,6 +14,7 @@ general {
 order += "disk /"
 order += "battery all"
 order += "load"
+order += "volume master"
 order += "tztime local"
 
 battery all {
@@ -30,4 +31,10 @@ load {
 
 disk "/" {
         format = "%avail"
+}
+
+volume master {
+        format = "Vol %volume"
+        format_muted = "Muted %volume"
+        device = "default"
 }
