@@ -29,7 +29,7 @@ addToPathFront $HOME/.local/bin
 
 alias la="ls -A"
 alias gs="git status"
-alias gc="git commit -m"
+alias gc="git commit"
 alias ga="git add"
 alias gp="git push"
 alias gcane="git commit --amend --no-edit"
