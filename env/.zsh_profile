@@ -28,3 +28,15 @@ addToPathFront() {
 addToPathFront $HOME/.local/bin
 
 alias la="ls -A"
+alias gs="git status"
+alias gc="git commit -m"
+alias ga="git add"
+alias gp="git push"
+alias gcane="git commit --amend --no-edit"
+alias gl="git log --oneline"
+alias gb="git branch"
+alias cls="clear"
+alias gca="git commit --amend"
+alias gpf="git push --force-with-lease"
+alias gco="git checkout"
+alias gpr="git pull --rebase"
