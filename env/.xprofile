@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 setxkbmap -option caps:ctrl_modifier
+setxkbmap -layout us,ru -option grp:win_space_toggle
 
 TOUCHPAD_ID=$(xinput list | grep -i "touchpad" | awk -F'id=' '{print $2}' | awk '{print $1}')
 [ -z "$TOUCHPAD_ID" ] && exit 1

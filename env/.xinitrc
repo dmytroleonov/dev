@@ -1,3 +1,3 @@
-[ -f ~/.xprofile ] && source ~/.xprofile
+[[ -f ~/.xprofile ]] && source ~/.xprofile
 
 exec i3
