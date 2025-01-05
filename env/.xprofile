@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!usr/bin/env bash
 
 setxkbmap -option caps:ctrl_modifier
 setxkbmap -layout us,ru -option grp:win_space_toggle
@@ -15,11 +15,11 @@ fi
 
 PROP_NAME="libinput Scrolling Pixel Distance"
 if echo "$PROPS" | grep -q "$PROP_NAME"; then
-    sudo xinput set-prop "$TOUCHPAD_ID" "$PROP_NAME" 50
+    xinput set-prop "$TOUCHPAD_ID" "$PROP_NAME" 50
 fi
 
 PROP_NAME="libinput Tapping Enabled"
 if echo "$PROPS" | grep -q "$PROP_NAME"; then
-    sudo xinput set-prop "$TOUCHPAD_ID" "$PROP_NAME" 1
+    xinput set-prop "$TOUCHPAD_ID" "$PROP_NAME" 1
 fi
 
