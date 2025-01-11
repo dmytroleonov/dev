@@ -1,5 +1,7 @@
 #!usr/bin/env bash
 
+xset r rate 250 60
+
 setxkbmap -option caps:ctrl_modifier
 setxkbmap -layout us,ru -option grp:win_space_toggle
 
