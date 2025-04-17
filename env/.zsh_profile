@@ -1,5 +1,8 @@
 export XDG_CONFIG_HOME=$HOME/.config
 
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
 export GIT_EDITOR=nvim
 
 catr() {
@@ -24,19 +27,19 @@ addToPathFront() {
 }
 
 addToPathFront $HOME/.local/bin
+addToPath /usr/local/go/bin
 
 alias la="ls -A"
-alias gs="git status"
+alias gs="git status -u"
 alias gc="git commit"
 alias ga="git add"
 alias gp="git push"
 alias gcane="git commit --amend --no-edit"
 alias gl="git log --oneline"
 alias gb="git branch"
-alias cls="clear"
 alias gca="git commit --amend"
 alias gpf="git push --force-with-lease"
 alias gco="git checkout"
 alias gpr="git pull --rebase"
-alias grb="git rebase"
+alias gr="git rebase"
 alias grc="git rebase --continue"
