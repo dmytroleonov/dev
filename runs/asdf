@@ -1,3 +1,9 @@
 #!/usr/bin/env bash
 
-git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.16.7
+version="0.16.7"
+url="https://github.com/asdf-vm/asdf/releases/download/v$version/asdf-v$version-linux-amd64.tar.gz"
+dest_dir="$HOME/.local/bin"
+
+curl -sL "$url" -o /tmp/asdf.tar.gz
+mkdir -p "$dest_dir"
+tar -xvf /tmp/asdf.tar.gz -C "$dest_dir"
