@@ -50,6 +50,13 @@ bindsym Mod4+Shift+s exec --no-startup-id shutter -s
 bindsym Mod4+Shift+f exec --no-startup-id shutter -f
 bindsym Mod4+Shift+a exec --no-startup-id shutter -a
 
+# copyq
+bindsym Mod4+v exec --no-startup-id copyq show
+
+for_window [instance="copyq"] floating enable, resize set 1000 600
+
+exec --no-startup-id copyq
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
