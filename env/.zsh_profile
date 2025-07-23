@@ -38,3 +38,5 @@ alias gco="git checkout"
 alias gpr="git pull --rebase"
 alias gr="git rebase"
 alias grc="git rebase --continue"
+
+alias nr="npm run"
