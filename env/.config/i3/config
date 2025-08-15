@@ -94,6 +94,9 @@ bindsym $mod+Shift+n exec --no-startup-id xrandr --output eDP-1 --auto --output 
 # External display only
 bindsym $mod+Shift+m exec --no-startup-id xrandr --output HDMI-1 --auto --output eDP-1 --off
 
+# floating windows
+bindsym $mod+Shift+f sticky toggle
+
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
