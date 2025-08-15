@@ -1,0 +1,3 @@
+os:
+  edit: 'nvim --server $NVIM --remote-send "<C-\><C-N>:q<CR>:e {{filename}}<CR>"'
+  editAtLine: 'nvim --server $NVIM --remote-send "<C-\><C-N>:q<CR>:e +{{line}} {{filename}}<CR>zz"'
