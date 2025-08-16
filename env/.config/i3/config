@@ -62,6 +62,10 @@ for_window [instance="copyq"] floating enable, resize set 1000 600
 
 exec --no-startup-id copyq
 
+# background
+exec_always --no-startup-id feh --no-fehbg --bg-scale ~/Pictures/bg.png ~/Pictures/bg.png
+exec_always --no-startup-id picom --experimental-backends -b
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -88,11 +92,19 @@ bindcode $mod+32 exec "rofi -modi drun,run -show drun"
 # bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
 
 # Both displays
-bindsym $mod+Shift+b exec --no-startup-id bash -c 'source ~/.config/i3/env && xrandr --output $INTERNAL_MONITOR --auto --output $EXTERNAL_MONITOR --auto --above $INTERNAL_MONITOR'
+bindsym $mod+Shift+b exec --no-startup-id bash -c 'source ~/.config/i3/env && \
+xrandr --output $INTERNAL_MONITOR --auto --output $EXTERNAL_MONITOR --auto --above $INTERNAL_MONITOR && \
+feh --no-fehbg --bg-scale ~/Pictures/bg.png ~/Pictures/bg.png'
+
 # Built-in display only
-bindsym $mod+Shift+n exec --no-startup-id bash -c 'source ~/.config/i3/env && xrandr --output $INTERNAL_MONITOR --auto --output $EXTERNAL_MONITOR --auto --off'
+bindsym $mod+Shift+n exec --no-startup-id bash -c 'source ~/.config/i3/env && \
+xrandr --output $INTERNAL_MONITOR --auto --output $EXTERNAL_MONITOR --off && \
+feh --no-fehbg --bg-scale ~/Pictures/bg.png'
+
 # External display only
-bindsym $mod+Shift+m exec --no-startup-id bash -c 'source ~/.config/i3/env && xrandr --output $EXTERNAL_MONITOR --auto --auto --output $INTERNAL_MONITOR --off'
+bindsym $mod+Shift+m exec --no-startup-id bash -c 'source ~/.config/i3/env && \
+xrandr --output $EXTERNAL_MONITOR --auto --output $INTERNAL_MONITOR --off && \
+feh --no-fehbg --bg-scale ~/Pictures/bg.png'
 
 # floating windows
 bindsym $mod+Shift+f sticky toggle

@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
 
-sudo apt install i3-wm
-sudo apt install i3
+sudo apt install -y i3-wm i3
+
+# for blurred background
+sudo apt install -y feh picom
