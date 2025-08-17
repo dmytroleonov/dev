@@ -2,4 +2,4 @@
 
 sudo apt -y update
 sudo apt -y install git ripgrep pavucontrol xclip jq tldr shutter python3-pip \
-    fzf copyq snapd
+    fzf copyq snapd p7zip-full
