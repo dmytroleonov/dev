@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-VERSION=v0.11.3
+VERSION=release-0.11
 git clone -b $VERSION --depth 1 https://github.com/neovim/neovim.git $HOME/personal/neovim/$VERSION
 sudo apt install cmake gettext lua5.1 liblua5.1-0-dev
 
