@@ -63,8 +63,7 @@ for_window [instance="copyq"] floating enable, resize set 1000 600
 exec --no-startup-id copyq
 
 # background
-exec_always --no-startup-id feh --no-fehbg --bg-scale ~/Pictures/bg.png ~/Pictures/bg.png
-exec_always --no-startup-id picom --experimental-backends -b
+# exec_always --no-startup-id feh --no-fehbg --bg-scale ~/Pictures/bg.png ~/Pictures/bg.png
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod

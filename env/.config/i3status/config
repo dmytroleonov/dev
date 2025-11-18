@@ -12,6 +12,7 @@ general {
 }
 
 order += "disk /"
+order += "cpu_temperature 0"
 order += "battery all"
 order += "load"
 order += "volume master"
@@ -31,6 +32,12 @@ load {
 
 disk "/" {
         format = "%avail"
+}
+
+cpu_temperature 0 {
+        format = "T: %degrees °C"
+        path = "/sys/class/thermal/thermal_zone0/temp"
+        max_threshold = 75
 }
 
 volume master {

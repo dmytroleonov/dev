@@ -6,3 +6,4 @@ cursor-style-blink = false
 font-feature = -calt
 font-feature = -dlig
 font-feature = -liga
+app-notifications = no-clipboard-copy
