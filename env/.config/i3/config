@@ -42,9 +42,10 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # Switch languages
-bindsym $mod+Shift+1 exec --no-startup-id setxkbmap us -option caps:ctrl_modifier
-bindsym $mod+Shift+2 exec --no-startup-id setxkbmap ru -option caps:ctrl_modifier
-bindsym $mod+Shift+3 exec --no-startup-id setxkbmap ua -option caps:ctrl_modifier
+exec --no-startup-id setxkbmap -layout us,ru,ua -option caps:ctrl_modifier
+bindsym Mod1+Shift+1 exec --no-startup-id xkb-switch -s us
+bindsym Mod1+Shift+2 exec --no-startup-id xkb-switch -s ru
+bindsym Mod1+Shift+3 exec --no-startup-id xkb-switch -s ua
 
 # brightness
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl -q --min-value=10% set 10%-
