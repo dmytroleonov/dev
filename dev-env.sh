@@ -56,7 +56,4 @@ copy_file() {
 
 copy_dir env/.config $XDG_CONFIG_HOME
 
-copy_file env/.zsh_profile $HOME
 copy_file env/.zshrc $HOME
-copy_file env/.xprofile $HOME
-copy_file env/.xinitrc $HOME
