@@ -138,3 +138,5 @@ zstyle :compinstall filename '/home/leonovd/.zshrc'
 fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
 autoload -Uz compinit
 compinit
+
+eval "$(starship init zsh)"
