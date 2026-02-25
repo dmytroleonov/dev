@@ -2,4 +2,4 @@
 
 sudo pacman -S --needed --noconfirm git unzip \
     noto-fonts noto-fonts-emoji noto-fonts-cjk \
-    ripgrep
+    ripgrep wl-clipboard
