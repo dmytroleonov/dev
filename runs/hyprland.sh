@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-sudo pacman -S --noconfirm --needed hyprland
+sudo pacman -S --noconfirm --needed hyprland xdg-desktop-portal-hyprland
