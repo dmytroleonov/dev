@@ -131,12 +131,13 @@ setopt autocd extendedglob
 
 ZSH_THEME="robbyrussell"
 
-plugins=(git asdf)
+plugins=(asdf zsh-autocomplete zsh-syntax-highlighting)
 
 export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
-zstyle :compinstall filename '/home/leonovd/.zshrc'
 fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
-autoload -Uz compinit
-compinit
+
+for plugin in /usr/share/zsh/plugins/*; do
+  source $plugin/*.plugin.zsh 2>/dev/null
+done
 
 eval "$(starship init zsh)"
