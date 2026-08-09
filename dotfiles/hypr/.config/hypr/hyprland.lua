@@ -224,11 +224,11 @@ hl.define_submap("resize", function()
 end)
 
 hl.bind("ALT + SHIFT + 1",
-    hl.dsp.exec_cmd("hyprctl switchxkblayout ite-tech.-inc.-ite-device(8910)-keyboard 0"))
+    hl.dsp.exec_cmd("hyprctl switchxkblayout main 0"))
 hl.bind("ALT + SHIFT + 2",
-    hl.dsp.exec_cmd("hyprctl switchxkblayout ite-tech.-inc.-ite-device(8910)-keyboard 1"))
+    hl.dsp.exec_cmd("hyprctl switchxkblayout main 1"))
 hl.bind("ALT + SHIFT + 3",
-    hl.dsp.exec_cmd("hyprctl switchxkblayout ite-tech.-inc.-ite-device(8910)-keyboard 2"))
+    hl.dsp.exec_cmd("hyprctl switchxkblayout main 2"))
 
 hl.bind(mod .. " + H", hl.dsp.focus({ direction = "left" }))
 hl.bind(mod .. " + H", hl.dsp.window.alter_zorder({ mode = "top" }))
