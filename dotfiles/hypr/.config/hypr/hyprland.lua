@@ -110,11 +110,11 @@ hl.config({
     },
 })
 
-hl.bind(mod .. " + " .. "period", hl.dsp.layout("swapcol r"))
-hl.bind(mod .. " + " .. "comma", hl.dsp.layout("swapcol l"))
-hl.bind(mod .. " + " .. "semicolon", hl.dsp.layout("fit visible"))
-hl.bind(mod .. " + " .. "P", hl.dsp.layout("promote"))
-hl.bind(mod .. " + " .. "SHIFT" .. " + " .. "R", hl.dsp.layout("colresize +conf"))
+hl.bind(mod .. " + period", hl.dsp.layout("swapcol r"))
+hl.bind(mod .. " + comma", hl.dsp.layout("swapcol l"))
+hl.bind(mod .. " + semicolon", hl.dsp.layout("fit visible"))
+hl.bind(mod .. " + P", hl.dsp.layout("promote"))
+hl.bind(mod .. " + SHIFT + R", hl.dsp.layout("colresize +conf"))
 
 hl.config({
     master = {
@@ -171,75 +171,72 @@ hl.config({
 
 hl.gesture({ fingers = 3, direction = "horizontal", action = "workspace" })
 
-hl.bind(mod .. " + " .. "S",
+hl.bind(mod .. " + S",
     hl.dsp.exec_cmd("hyprctl keyword workspace $(hyprctl activeworkspace -j| jq \".id\" ),layout:scrolling"))
-hl.bind(mod .. " + " .. "D",
+hl.bind(mod .. " + D",
     hl.dsp.exec_cmd("hyprctl keyword workspace $(hyprctl activeworkspace -j| jq \".id\" ),layout:dwindle"))
-hl.bind(mod .. " + " .. "M",
+hl.bind(mod .. " + M",
     hl.dsp.exec_cmd("hyprctl keyword workspace $(hyprctl activeworkspace -j| jq \".id\" ),layout:master"))
 
-hl.bind(mod .. " + " .. "SHIFT" .. " + " .. "M",
+hl.bind(mod .. " + SHIFT + M",
     hl.dsp.exec_cmd("hyprctl keyword monitor HDMI-A-1,1920x1080@60,0x0,1; hyprctl keyword monitor eDP-1,disable"))
-hl.bind(mod .. " + " .. "SHIFT" .. " + " .. "N",
+hl.bind(mod .. " + SHIFT + N",
     hl.dsp.exec_cmd("hyprctl keyword monitor eDP-1,2560x1440@165,0x1080,1.6; hyprctl keyword monitor HDMI-A-1,disable"))
-hl.bind(mod .. " + " .. "SHIFT" .. " + " .. "B",
+hl.bind(mod .. " + SHIFT + B",
     hl.dsp.exec_cmd(
         "hyprctl keyword monitor eDP-1,2560x1440@165,0x1080,1.6; hyprctl keyword monitor HDMI-A-1,1920x1080@60,0x0,1"))
 
-hl.bind(mod .. " + " .. "SHIFT + ALT" .. " + " .. "L", hl.dsp.exec_cmd("swaylock --color=000000 --show-failed-attempts"))
+hl.bind(mod .. " + SHIFT + ALT + L", hl.dsp.exec_cmd("swaylock --color=000000 --show-failed-attempts"))
 
-hl.bind("ALT" .. " + " .. "W", hl.dsp.group.toggle())
-hl.bind("ALT" .. " + " .. "H", hl.dsp.group.next({ forward = false }))
-hl.bind("ALT" .. " + " .. "L", hl.dsp.group.next())
-hl.bind("ALT + SHIFT" .. " + " .. "H",
+hl.bind("ALT" .. " + W", hl.dsp.group.toggle())
+hl.bind("ALT" .. " + H", hl.dsp.group.next({ forward = false }))
+hl.bind("ALT" .. " + L", hl.dsp.group.next())
+hl.bind("ALT + SHIFT + H",
     hl.dsp.exec_cmd("hyprctl --batch \"dispatch movegroupwindow b; dispatch changegroupactive b\""))
-hl.bind("ALT + SHIFT" .. " + " .. "L",
+hl.bind("ALT + SHIFT + L",
     hl.dsp.exec_cmd("hyprctl --batch \"dispatch movegroupwindow f; dispatch changegroupactive f\""))
 hl.bind("ALT + I", hl.dsp.group.lock_active({ action = "toggle" }))
-hl.bind("ALT" .. " + " .. "U", hl.dsp.window.move({ out_of_group = true }))
-hl.bind("ALT" .. " + " .. "H", hl.dsp.window.move({ into_group = "left" }))
-hl.bind("ALT" .. " + " .. "J", hl.dsp.window.move({ into_group = "down" }))
-hl.bind("ALT" .. " + " .. "K", hl.dsp.window.move({ into_group = "up" }))
-hl.bind("ALT" .. " + " .. "L", hl.dsp.window.move({ into_group = "right" }))
-hl.bind(mod .. " + " .. "SHIFT" .. " + " .. "S",
+hl.bind("ALT" .. " + U", hl.dsp.window.move({ out_of_group = true }))
+hl.bind("ALT" .. " + H", hl.dsp.window.move({ into_group = "left" }))
+hl.bind("ALT" .. " + J", hl.dsp.window.move({ into_group = "down" }))
+hl.bind("ALT" .. " + K", hl.dsp.window.move({ into_group = "up" }))
+hl.bind("ALT" .. " + L", hl.dsp.window.move({ into_group = "right" }))
+hl.bind(mod .. " + SHIFT + S",
     hl.dsp.exec_cmd("grim -g \"$(slurp)\"-| GTK_THEME=Adwaita:dark swappy -f-"))
-hl.bind(mod .. " + " .. "V", hl.dsp.exec_cmd("copyq show"))
-hl.bind(mod .. " + " .. "Return", hl.dsp.exec_cmd("ghostty"))
-hl.bind(mod .. " + " .. "Q", hl.dsp.window.close())
-hl.bind(mod .. " + " .. "ALT" .. " + " .. "E",
+hl.bind(mod .. " + V", hl.dsp.exec_cmd("copyq show"))
+hl.bind(mod .. " + Return", hl.dsp.exec_cmd("ghostty"))
+hl.bind(mod .. " + Q", hl.dsp.window.close())
+hl.bind(mod .. " + ALT + E",
     hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch exit"))
-hl.bind(mod .. " + " .. "SHIFT" .. " + " .. "SPACE", hl.dsp.window.float())
-hl.bind(mod .. " + " .. "O", hl.dsp.exec_cmd("fuzzel"))
-hl.bind(mod .. " + " .. "E", hl.dsp.layout("togglesplit"))
-hl.bind(mod .. " + " .. "F", hl.dsp.window.fullscreen())
-hl.bind(mod .. " + " .. "SHIFT" .. " + " .. "F", hl.dsp.window.fullscreen())
-hl.bind(mod .. " + " .. "R", hl.dsp.submap("resize"))
+hl.bind(mod .. " + SHIFT + SPACE", hl.dsp.window.float())
+hl.bind(mod .. " + O", hl.dsp.exec_cmd("fuzzel"))
+hl.bind(mod .. " + E", hl.dsp.layout("togglesplit"))
+hl.bind(mod .. " + F", hl.dsp.window.fullscreen())
+hl.bind(mod .. " + SHIFT + F", hl.dsp.window.fullscreen())
+hl.bind(mod .. " + R", hl.dsp.submap("resize"))
 hl.define_submap("resize", function()
-    hl.bind(mod .. "+ L", hl.dsp.window.resize({ x = 10, y = 0, relative = true }), { repeating = true })
-    hl.bind(mod .. "+ H", hl.dsp.window.resize({ x = -10, y = 0, relative = true }), { repeating = true })
-    hl.bind(mod .. "+ K", hl.dsp.window.resize({ x = 0, y = 10, relative = true }), { repeating = true })
-    hl.bind(mod .. "+ J", hl.dsp.window.resize({ x = 0, y = -10, relative = true }), { repeating = true })
+    hl.bind("L", hl.dsp.window.resize({ x = 10, y = 0, relative = true }), { repeating = true })
+    hl.bind("H", hl.dsp.window.resize({ x = -10, y = 0, relative = true }), { repeating = true })
+    hl.bind("K", hl.dsp.window.resize({ x = 0, y = 10, relative = true }), { repeating = true })
+    hl.bind("J", hl.dsp.window.resize({ x = 0, y = -10, relative = true }), { repeating = true })
     hl.bind("escape", hl.dsp.submap("reset"))
-    hl.bind(mod .. " + " .. "R", hl.dsp.submap("reset"))
+    hl.bind(mod .. " + R", hl.dsp.submap("reset"))
 end)
 
-hl.bind("ALT + SHIFT" .. " + " .. 1,
+hl.bind("ALT + SHIFT + 1",
     hl.dsp.exec_cmd("hyprctl switchxkblayout ite-tech.-inc.-ite-device(8910)-keyboard 0"))
-hl.bind("ALT + SHIFT" .. " + " .. 2,
+hl.bind("ALT + SHIFT + 2",
     hl.dsp.exec_cmd("hyprctl switchxkblayout ite-tech.-inc.-ite-device(8910)-keyboard 1"))
-hl.bind("ALT + SHIFT" .. " + " .. 3,
+hl.bind("ALT + SHIFT + 3",
     hl.dsp.exec_cmd("hyprctl switchxkblayout ite-tech.-inc.-ite-device(8910)-keyboard 2"))
 
-hl.bind(mod .. " + " .. "H", hl.dsp.focus({ direction = "left" }))
+hl.bind(mod .. " + H", hl.dsp.focus({ direction = "left" }))
 hl.bind(mod .. " + H", hl.dsp.window.alter_zorder({ mode = "top" }))
-
-hl.bind(mod .. " + " .. "L", hl.dsp.focus({ direction = "right" }))
+hl.bind(mod .. " + L", hl.dsp.focus({ direction = "right" }))
 hl.bind(mod .. " + L", hl.dsp.window.alter_zorder({ mode = "top" }))
-
-hl.bind(mod .. " + " .. "K", hl.dsp.focus({ direction = "up" }))
+hl.bind(mod .. " + K", hl.dsp.focus({ direction = "up" }))
 hl.bind(mod .. " + K", hl.dsp.window.alter_zorder({ mode = "top" }))
-
-hl.bind(mod .. " + " .. "J", hl.dsp.focus({ direction = "down" }))
+hl.bind(mod .. " + J", hl.dsp.focus({ direction = "down" }))
 hl.bind(mod .. " + J", hl.dsp.window.alter_zorder({ mode = "top" }))
 
 hl.bind(mod .. " + CONTROL + H", hl.dsp.workspace.move({ monitor = "l" }))
@@ -247,41 +244,41 @@ hl.bind(mod .. " + CONTROL + L", hl.dsp.workspace.move({ monitor = "r" }))
 hl.bind(mod .. " + CONTROL + K", hl.dsp.workspace.move({ monitor = "u" }))
 hl.bind(mod .. " + CONTROL + J", hl.dsp.workspace.move({ monitor = "d" }))
 
-hl.bind(mod .. " + " .. 1, hl.dsp.focus({ workspace = 1 }))
-hl.bind(mod .. " + " .. 2, hl.dsp.focus({ workspace = 2 }))
-hl.bind(mod .. " + " .. 3, hl.dsp.focus({ workspace = 3 }))
-hl.bind(mod .. " + " .. 4, hl.dsp.focus({ workspace = 4 }))
-hl.bind(mod .. " + " .. 5, hl.dsp.focus({ workspace = 5 }))
-hl.bind(mod .. " + " .. 6, hl.dsp.focus({ workspace = 6 }))
-hl.bind(mod .. " + " .. 7, hl.dsp.focus({ workspace = 7 }))
-hl.bind(mod .. " + " .. 8, hl.dsp.focus({ workspace = 8 }))
-hl.bind(mod .. " + " .. 9, hl.dsp.focus({ workspace = 9 }))
-hl.bind(mod .. " + " .. 0, hl.dsp.focus({ workspace = 10 }))
+hl.bind(mod .. " + 1", hl.dsp.focus({ workspace = 1 }))
+hl.bind(mod .. " + 2", hl.dsp.focus({ workspace = 2 }))
+hl.bind(mod .. " + 3", hl.dsp.focus({ workspace = 3 }))
+hl.bind(mod .. " + 4", hl.dsp.focus({ workspace = 4 }))
+hl.bind(mod .. " + 5", hl.dsp.focus({ workspace = 5 }))
+hl.bind(mod .. " + 6", hl.dsp.focus({ workspace = 6 }))
+hl.bind(mod .. " + 7", hl.dsp.focus({ workspace = 7 }))
+hl.bind(mod .. " + 8", hl.dsp.focus({ workspace = 8 }))
+hl.bind(mod .. " + 9", hl.dsp.focus({ workspace = 9 }))
+hl.bind(mod .. " + 0", hl.dsp.focus({ workspace = 10 }))
 
-hl.bind(mod .. " + " .. "SHIFT" .. " + " .. 1, hl.dsp.window.move({ workspace = 1 }))
-hl.bind(mod .. " + " .. "SHIFT" .. " + " .. 2, hl.dsp.window.move({ workspace = 2 }))
-hl.bind(mod .. " + " .. "SHIFT" .. " + " .. 3, hl.dsp.window.move({ workspace = 3 }))
-hl.bind(mod .. " + " .. "SHIFT" .. " + " .. 4, hl.dsp.window.move({ workspace = 4 }))
-hl.bind(mod .. " + " .. "SHIFT" .. " + " .. 5, hl.dsp.window.move({ workspace = 5 }))
-hl.bind(mod .. " + " .. "SHIFT" .. " + " .. 6, hl.dsp.window.move({ workspace = 6 }))
-hl.bind(mod .. " + " .. "SHIFT" .. " + " .. 7, hl.dsp.window.move({ workspace = 7 }))
-hl.bind(mod .. " + " .. "SHIFT" .. " + " .. 8, hl.dsp.window.move({ workspace = 8 }))
-hl.bind(mod .. " + " .. "SHIFT" .. " + " .. 9, hl.dsp.window.move({ workspace = 9 }))
-hl.bind(mod .. " + " .. "SHIFT" .. " + " .. 0, hl.dsp.window.move({ workspace = 10 }))
+hl.bind(mod .. " + SHIFT + 1", hl.dsp.window.move({ workspace = 1 }))
+hl.bind(mod .. " + SHIFT + 2", hl.dsp.window.move({ workspace = 2 }))
+hl.bind(mod .. " + SHIFT + 3", hl.dsp.window.move({ workspace = 3 }))
+hl.bind(mod .. " + SHIFT + 4", hl.dsp.window.move({ workspace = 4 }))
+hl.bind(mod .. " + SHIFT + 5", hl.dsp.window.move({ workspace = 5 }))
+hl.bind(mod .. " + SHIFT + 6", hl.dsp.window.move({ workspace = 6 }))
+hl.bind(mod .. " + SHIFT + 7", hl.dsp.window.move({ workspace = 7 }))
+hl.bind(mod .. " + SHIFT + 8", hl.dsp.window.move({ workspace = 8 }))
+hl.bind(mod .. " + SHIFT + 9", hl.dsp.window.move({ workspace = 9 }))
+hl.bind(mod .. " + SHIFT + 0", hl.dsp.window.move({ workspace = 10 }))
 
-hl.bind(mod .. " + " .. "SHIFT" .. " + " .. "H", hl.dsp.window.move({ direction = "l" }))
-hl.bind(mod .. " + " .. "SHIFT" .. " + " .. "J", hl.dsp.window.move({ direction = "d" }))
-hl.bind(mod .. " + " .. "SHIFT" .. " + " .. "K", hl.dsp.window.move({ direction = "u" }))
-hl.bind(mod .. " + " .. "SHIFT" .. " + " .. "L", hl.dsp.window.move({ direction = "r" }))
+hl.bind(mod .. " + SHIFT + H", hl.dsp.window.move({ direction = "l" }))
+hl.bind(mod .. " + SHIFT + J", hl.dsp.window.move({ direction = "d" }))
+hl.bind(mod .. " + SHIFT + K", hl.dsp.window.move({ direction = "u" }))
+hl.bind(mod .. " + SHIFT + L", hl.dsp.window.move({ direction = "r" }))
 
 hl.bind("CONTROL_R", hl.dsp.pass({ window = "class:^(discord)$" }))
-hl.bind("CONTROL" .. " + " .. "M", hl.dsp.pass({ window = "class:^(discord)$" }))
+hl.bind("CONTROL + M", hl.dsp.pass({ window = "class:^(discord)$" }))
 
-hl.bind(mod .. " + " .. "mouse_down", hl.dsp.focus({ workspace = "e-1" }))
-hl.bind(mod .. " + " .. "mouse_up", hl.dsp.focus({ workspace = "e+1" }))
+hl.bind(mod .. " + mouse_down", hl.dsp.focus({ workspace = "e-1" }))
+hl.bind(mod .. " + mouse_up", hl.dsp.focus({ workspace = "e+1" }))
 
-hl.bind(mod .. " + " .. "mouse:272", hl.dsp.window.drag(), { mouse = true })
-hl.bind(mod .. " + " .. "mouse:273", hl.dsp.window.resize(), { mouse = true })
+hl.bind(mod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
+hl.bind(mod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
 hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"), { locked = true })
 hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"), { locked = true })
