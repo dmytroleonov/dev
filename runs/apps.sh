@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
 sudo pacman -S --noconfirm --needed telegram-desktop discord spotify-launcher \
-    libreoffice-fresh code
+    libreoffice-fresh code parsec-bin
