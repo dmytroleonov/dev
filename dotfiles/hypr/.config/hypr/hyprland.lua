@@ -271,7 +271,7 @@ hl.bind(mod .. " + SHIFT + J", hl.dsp.window.move({ direction = "d" }))
 hl.bind(mod .. " + SHIFT + K", hl.dsp.window.move({ direction = "u" }))
 hl.bind(mod .. " + SHIFT + L", hl.dsp.window.move({ direction = "r" }))
 
-hl.bind("CONTROL_R", hl.dsp.pass({ window = "class:^(discord)$" }))
+hl.bind("CONTROL + CONTROL_R", hl.dsp.pass({ window = "class:^(discord)$" }))
 hl.bind("CONTROL + M", hl.dsp.pass({ window = "class:^(discord)$" }))
 
 hl.bind(mod .. " + mouse_down", hl.dsp.focus({ workspace = "e-1" }))
