@@ -171,23 +171,32 @@ hl.config({
 
 hl.gesture({ fingers = 3, direction = "horizontal", action = "workspace" })
 
-hl.bind(mod .. " + S", hl.dsp.exec_cmd("hyprctl keyword workspace $(hyprctl activeworkspace -j| jq \".id\" ),layout:scrolling"))
-hl.bind(mod .. " + D", hl.dsp.exec_cmd("hyprctl keyword workspace $(hyprctl activeworkspace -j| jq \".id\" ),layout:dwindle"))
-hl.bind(mod .. " + M", hl.dsp.exec_cmd("hyprctl keyword workspace $(hyprctl activeworkspace -j| jq \".id\" ),layout:master"))
+hl.bind(mod .. " + S",
+    hl.dsp.exec_cmd("hyprctl keyword workspace $(hyprctl activeworkspace -j| jq \".id\" ),layout:scrolling"))
+hl.bind(mod .. " + D",
+    hl.dsp.exec_cmd("hyprctl keyword workspace $(hyprctl activeworkspace -j| jq \".id\" ),layout:dwindle"))
+hl.bind(mod .. " + M",
+    hl.dsp.exec_cmd("hyprctl keyword workspace $(hyprctl activeworkspace -j| jq \".id\" ),layout:master"))
 
 hl.bind(mod .. " + SHIFT + P", hl.dsp.window.pin())
 
-hl.bind(mod .. " + SHIFT + M", hl.dsp.exec_cmd("hyprctl keyword monitor HDMI-A-1,1920x1080@60,0x0,1; hyprctl keyword monitor eDP-1,disable"))
-hl.bind(mod .. " + SHIFT + N", hl.dsp.exec_cmd("hyprctl keyword monitor eDP-1,2560x1440@165,0x1080,1.6; hyprctl keyword monitor HDMI-A-1,disable"))
-hl.bind(mod .. " + SHIFT + B", hl.dsp.exec_cmd( "hyprctl keyword monitor eDP-1,2560x1440@165,0x1080,1.6; hyprctl keyword monitor HDMI-A-1,1920x1080@60,0x0,1"))
+hl.bind(mod .. " + SHIFT + M",
+    hl.dsp.exec_cmd("hyprctl keyword monitor HDMI-A-1,1920x1080@60,0x0,1; hyprctl keyword monitor eDP-1,disable"))
+hl.bind(mod .. " + SHIFT + N",
+    hl.dsp.exec_cmd("hyprctl keyword monitor eDP-1,2560x1440@165,0x1080,1.6; hyprctl keyword monitor HDMI-A-1,disable"))
+hl.bind(mod .. " + SHIFT + B",
+    hl.dsp.exec_cmd(
+    "hyprctl keyword monitor eDP-1,2560x1440@165,0x1080,1.6; hyprctl keyword monitor HDMI-A-1,1920x1080@60,0x0,1"))
 
 hl.bind(mod .. " + SHIFT + ALT + L", hl.dsp.exec_cmd("swaylock --color=000000 --show-failed-attempts"))
 
 hl.bind("ALT + W", hl.dsp.group.toggle())
 hl.bind("ALT + H", hl.dsp.group.next({ forward = false }))
 hl.bind("ALT + L", hl.dsp.group.next())
-hl.bind("ALT + SHIFT + H", hl.dsp.exec_cmd("hyprctl --batch \"dispatch movegroupwindow b; dispatch changegroupactive b\""))
-hl.bind("ALT + SHIFT + L", hl.dsp.exec_cmd("hyprctl --batch \"dispatch movegroupwindow f; dispatch changegroupactive f\""))
+hl.bind("ALT + SHIFT + H",
+    hl.dsp.exec_cmd("hyprctl --batch \"dispatch movegroupwindow b; dispatch changegroupactive b\""))
+hl.bind("ALT + SHIFT + L",
+    hl.dsp.exec_cmd("hyprctl --batch \"dispatch movegroupwindow f; dispatch changegroupactive f\""))
 hl.bind("ALT + I", hl.dsp.group.lock_active({ action = "toggle" }))
 hl.bind("ALT + U", hl.dsp.window.move({ out_of_group = true }))
 hl.bind("ALT + H", hl.dsp.window.move({ into_group = "left" }))
