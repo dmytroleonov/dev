@@ -175,6 +175,8 @@ hl.bind(mod .. " + S", hl.dsp.exec_cmd("hyprctl keyword workspace $(hyprctl acti
 hl.bind(mod .. " + D", hl.dsp.exec_cmd("hyprctl keyword workspace $(hyprctl activeworkspace -j| jq \".id\" ),layout:dwindle"))
 hl.bind(mod .. " + M", hl.dsp.exec_cmd("hyprctl keyword workspace $(hyprctl activeworkspace -j| jq \".id\" ),layout:master"))
 
+hl.bind(mod .. " + SHIFT + P", hl.dsp.window.pin())
+
 hl.bind(mod .. " + SHIFT + M", hl.dsp.exec_cmd("hyprctl keyword monitor HDMI-A-1,1920x1080@60,0x0,1; hyprctl keyword monitor eDP-1,disable"))
 hl.bind(mod .. " + SHIFT + N", hl.dsp.exec_cmd("hyprctl keyword monitor eDP-1,2560x1440@165,0x1080,1.6; hyprctl keyword monitor HDMI-A-1,disable"))
 hl.bind(mod .. " + SHIFT + B", hl.dsp.exec_cmd( "hyprctl keyword monitor eDP-1,2560x1440@165,0x1080,1.6; hyprctl keyword monitor HDMI-A-1,1920x1080@60,0x0,1"))
