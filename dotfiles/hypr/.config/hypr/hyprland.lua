@@ -201,8 +201,8 @@ hl.bind("ALT" .. " + H", hl.dsp.window.move({ into_group = "left" }))
 hl.bind("ALT" .. " + J", hl.dsp.window.move({ into_group = "down" }))
 hl.bind("ALT" .. " + K", hl.dsp.window.move({ into_group = "up" }))
 hl.bind("ALT" .. " + L", hl.dsp.window.move({ into_group = "right" }))
-hl.bind(mod .. " + SHIFT + S",
-    hl.dsp.exec_cmd("grim -g \"$(slurp)\"-| GTK_THEME=Adwaita:dark swappy -f-"))
+hl.bind(mod .. " + SHIFT + S", hl.dsp.exec_cmd("hyprshot -m region --clipboard-only --silent"))
+hl.bind(mod .. " + SHIFT + A", hl.dsp.exec_cmd("hyprshot -m region --raw | satty --disable-notifications --filename -"))
 hl.bind(mod .. " + V", hl.dsp.exec_cmd("copyq show"))
 hl.bind(mod .. " + Return", hl.dsp.exec_cmd("ghostty"))
 hl.bind(mod .. " + Q", hl.dsp.window.close())
@@ -329,4 +329,12 @@ hl.window_rule({
         class = "com.mitchellh.ghostty",
     },
     opacity = 0.95,
+})
+
+hl.window_rule({
+    name = "float-satty",
+    match = {
+        class = "^com.gabm.satty$",
+    },
+    float = true,
 })
