@@ -179,6 +179,15 @@ hl.bind(mod .. " + M",
     hl.dsp.exec_cmd("hyprctl keyword workspace $(hyprctl activeworkspace -j| jq \".id\" ),layout:master"))
 
 hl.bind(mod .. " + SHIFT + P", hl.dsp.window.pin())
+hl.bind(mod .. " + SPACE", function()
+    local window = hl.get_active_window()
+    if not window then
+        return
+    end
+    local floating = window.floating
+
+    hl.dispatch(hl.dsp.window.cycle_next({ tyled = floating, floating = not floating }))
+end)
 
 hl.bind(mod .. " + SHIFT + M",
     hl.dsp.exec_cmd("hyprctl keyword monitor HDMI-A-1,1920x1080@60,0x0,1; hyprctl keyword monitor eDP-1,disable"))
@@ -186,7 +195,7 @@ hl.bind(mod .. " + SHIFT + N",
     hl.dsp.exec_cmd("hyprctl keyword monitor eDP-1,2560x1440@165,0x1080,1.6; hyprctl keyword monitor HDMI-A-1,disable"))
 hl.bind(mod .. " + SHIFT + B",
     hl.dsp.exec_cmd(
-    "hyprctl keyword monitor eDP-1,2560x1440@165,0x1080,1.6; hyprctl keyword monitor HDMI-A-1,1920x1080@60,0x0,1"))
+        "hyprctl keyword monitor eDP-1,2560x1440@165,0x1080,1.6; hyprctl keyword monitor HDMI-A-1,1920x1080@60,0x0,1"))
 
 hl.bind(mod .. " + SHIFT + ALT + L", hl.dsp.exec_cmd("swaylock --color=000000 --show-failed-attempts"))
 
