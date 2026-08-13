@@ -171,20 +171,13 @@ hl.config({
 
 hl.gesture({ fingers = 3, direction = "horizontal", action = "workspace" })
 
-hl.bind(mod .. " + S",
-    hl.dsp.exec_cmd("hyprctl keyword workspace $(hyprctl activeworkspace -j| jq \".id\" ),layout:scrolling"))
-hl.bind(mod .. " + D",
-    hl.dsp.exec_cmd("hyprctl keyword workspace $(hyprctl activeworkspace -j| jq \".id\" ),layout:dwindle"))
-hl.bind(mod .. " + M",
-    hl.dsp.exec_cmd("hyprctl keyword workspace $(hyprctl activeworkspace -j| jq \".id\" ),layout:master"))
+hl.bind(mod .. " + S", hl.dsp.exec_cmd("hyprctl keyword workspace $(hyprctl activeworkspace -j| jq \".id\" ),layout:scrolling"))
+hl.bind(mod .. " + D", hl.dsp.exec_cmd("hyprctl keyword workspace $(hyprctl activeworkspace -j| jq \".id\" ),layout:dwindle"))
+hl.bind(mod .. " + M", hl.dsp.exec_cmd("hyprctl keyword workspace $(hyprctl activeworkspace -j| jq \".id\" ),layout:master"))
 
-hl.bind(mod .. " + SHIFT + M",
-    hl.dsp.exec_cmd("hyprctl keyword monitor HDMI-A-1,1920x1080@60,0x0,1; hyprctl keyword monitor eDP-1,disable"))
-hl.bind(mod .. " + SHIFT + N",
-    hl.dsp.exec_cmd("hyprctl keyword monitor eDP-1,2560x1440@165,0x1080,1.6; hyprctl keyword monitor HDMI-A-1,disable"))
-hl.bind(mod .. " + SHIFT + B",
-    hl.dsp.exec_cmd(
-        "hyprctl keyword monitor eDP-1,2560x1440@165,0x1080,1.6; hyprctl keyword monitor HDMI-A-1,1920x1080@60,0x0,1"))
+hl.bind(mod .. " + SHIFT + M", hl.dsp.exec_cmd("hyprctl keyword monitor HDMI-A-1,1920x1080@60,0x0,1; hyprctl keyword monitor eDP-1,disable"))
+hl.bind(mod .. " + SHIFT + N", hl.dsp.exec_cmd("hyprctl keyword monitor eDP-1,2560x1440@165,0x1080,1.6; hyprctl keyword monitor HDMI-A-1,disable"))
+hl.bind(mod .. " + SHIFT + B", hl.dsp.exec_cmd( "hyprctl keyword monitor eDP-1,2560x1440@165,0x1080,1.6; hyprctl keyword monitor HDMI-A-1,1920x1080@60,0x0,1"))
 
 hl.bind(mod .. " + SHIFT + ALT + L", hl.dsp.exec_cmd("swaylock --color=000000 --show-failed-attempts"))
 
@@ -221,12 +214,9 @@ hl.define_submap("resize", function()
     hl.bind(mod .. " + R", hl.dsp.submap("reset"))
 end)
 
-hl.bind("ALT + SHIFT + 1",
-    hl.dsp.exec_cmd("hyprctl switchxkblayout main 0"))
-hl.bind("ALT + SHIFT + 2",
-    hl.dsp.exec_cmd("hyprctl switchxkblayout main 1"))
-hl.bind("ALT + SHIFT + 3",
-    hl.dsp.exec_cmd("hyprctl switchxkblayout main 2"))
+hl.bind("ALT + SHIFT + 1", hl.dsp.exec_cmd("hyprctl switchxkblayout main 0"))
+hl.bind("ALT + SHIFT + 2", hl.dsp.exec_cmd("hyprctl switchxkblayout main 1"))
+hl.bind("ALT + SHIFT + 3", hl.dsp.exec_cmd("hyprctl switchxkblayout main 2"))
 
 hl.bind(mod .. " + H", hl.dsp.focus({ direction = "left" }))
 hl.bind(mod .. " + H", hl.dsp.window.alter_zorder({ mode = "top" }))
