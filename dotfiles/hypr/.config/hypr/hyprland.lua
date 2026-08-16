@@ -279,8 +279,41 @@ hl.bind(mod .. " + SHIFT + J", hl.dsp.window.move({ direction = "d" }))
 hl.bind(mod .. " + SHIFT + K", hl.dsp.window.move({ direction = "u" }))
 hl.bind(mod .. " + SHIFT + L", hl.dsp.window.move({ direction = "r" }))
 
-hl.bind("CONTROL + CONTROL_R", hl.dsp.pass({ window = "class:^(discord)$" }))
-hl.bind("CONTROL + M", hl.dsp.pass({ window = "class:^(discord)$" }))
+-- need to send two separate states or discord will infinitely type "d"/"m" in the chat
+hl.bind("CONTROL + M",
+    function()
+        hl.dispatch(hl.dsp.send_key_state({
+            mods = "CONTROL + SHIFT",
+            key = "D",
+            state = "down",
+            window =
+            "class:^(discord)$"
+        }))
+        hl.dispatch(hl.dsp.send_key_state({
+            mods = "CONTROL + SHIFT",
+            key = "D",
+            state = "up",
+            window =
+            "class:^(discord)$"
+        }))
+    end)
+hl.bind("CONTROL_R",
+    function()
+        hl.dispatch(hl.dsp.send_key_state({
+            mods = "CONTROL + SHIFT",
+            key = "M",
+            state = "down",
+            window =
+            "class:^(discord)$"
+        }))
+        hl.dispatch(hl.dsp.send_key_state({
+            mods = "CONTROL + SHIFT",
+            key = "M",
+            state = "up",
+            window =
+            "class:^(discord)$"
+        }))
+    end)
 
 hl.bind(mod .. " + mouse_down", hl.dsp.focus({ workspace = "e-1" }))
 hl.bind(mod .. " + mouse_up", hl.dsp.focus({ workspace = "e+1" }))
