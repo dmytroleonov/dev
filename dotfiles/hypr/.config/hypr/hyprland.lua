@@ -134,7 +134,7 @@ hl.config({
 hl.config({
     input = {
         kb_layout = "us,ru,ua",
-        kb_options = "ctrl:nocaps",
+        kb_options = "caps:none",
         repeat_rate = 60,
         repeat_delay = 300,
         follow_mouse = 1,
