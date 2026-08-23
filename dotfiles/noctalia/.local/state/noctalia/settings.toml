@@ -1,0 +1,134 @@
+config_version = 13
+
+[bar.default]
+background_opacity = 0.79999998211860657
+capsule = true
+capsule_opacity = 0.59999998658895493
+center = [ "workspaces" ]
+end = [
+    "media",
+    "tray",
+    "notifications",
+    "clipboard",
+    "group:g1",
+    "brightness",
+    "battery",
+    "keyboard_layout",
+    "clock",
+    "control-center",
+    "session"
+]
+margin_ends = 0
+radius_top_left = 0
+radius_top_right = 0
+start = [ "launcher", "wallpaper", "cpu", "taskbar" ]
+widget_spacing = 2
+
+    [[bar.default.capsule_group]]
+    accordion = false
+    accordion_direction = "end"
+    enabled = true
+    fill = "surface_variant"
+    id = "g1"
+    members = [ "network", "bluetooth", "volume" ]
+    opacity = 0.59999996423721313
+    padding = 6.0
+
+[desktop_widgets]
+schema_version = 2
+widget_order = []
+
+    [desktop_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [desktop_widgets.widget]
+
+[location]
+auto_locate = true
+
+[lockscreen_widgets]
+enabled = false
+schema_version = 2
+widget_order = [ "lockscreen-login-box@eDP-1" ]
+
+    [lockscreen_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 800.0
+    cy = 718.0
+    output = "eDP-1"
+    placement_height = 900.0
+    placement_width = 1600.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@eDP-1".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+[osd.kinds]
+keyboard_backlight = false
+keyboard_layout = false
+lock_keys = false
+media = false
+privacy = false
+
+[shell]
+font_family = "JetBrainsMono Nerd Font Mono"
+
+[theme]
+builtin = "Catppuccin"
+
+[wallpaper]
+directory = "/home/leonovd/Pictures/walls"
+fill_mode = "span"
+transition_on_startup = true
+
+    [wallpaper.default]
+    path = "/home/leonovd/Pictures/walls/makima.png"
+
+    [wallpaper.last]
+    path = "/home/leonovd/Pictures/walls/makima.png"
+
+    [wallpaper.monitors.eDP-1]
+    path = "/home/leonovd/Pictures/walls/makima.png"
+
+[widget.brightness]
+enabled = false
+
+[widget.clipboard]
+enabled = false
+
+[widget.media]
+enabled = false
+
+[widget.network]
+show_label = false
+
+[widget.taskbar]
+only_active_workspace = true
+
+[widget.wallpaper]
+enabled = false
+
+[widget.workspaces]
+scroll_repeat = "steps"

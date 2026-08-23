@@ -24,7 +24,7 @@ hl.config({
 
 hl.on("hyprland.start", function()
     hl.exec_cmd("wl-clip-persist --clipboard regular &")
-    hl.exec_cmd("qs -c noctalia-shell --no-duplicate")
+    hl.exec_cmd("noctalia")
     hl.exec_cmd("copyq --start-server")
 end)
 
@@ -339,6 +339,12 @@ hl.window_rule({
         class = ".*",
     },
     suppress_event = "maximize",
+})
+
+hl.window_rule({
+    match = { class = "dev.noctalia.Noctalia" },
+    float = true,
+    size = { 1080, 820 },
 })
 
 hl.window_rule({
