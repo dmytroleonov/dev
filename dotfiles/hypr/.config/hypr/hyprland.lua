@@ -2,19 +2,34 @@
 
 local mod = "SUPER"
 
-hl.monitor({
-    output   = "HDMI-A-1",
-    mode     = "1920x1080@60",
-    position = "0x0",
-    scale    = 1,
-})
+---@class Config
+---@field internal boolean
+---@field external boolean
 
-hl.monitor({
-    output   = "eDP-1",
-    mode     = "2560x1440@165",
-    position = "0x1080",
-    scale    = 1.6,
-})
+---@param config? Config
+local function setup_monitors(config)
+    if not config then config = { internal = true, external = true } end
+    if config.internal == nil then config.internal = true end
+    if config.external == nil then config.external = true end
+
+    hl.monitor({
+        disabled = not config.external,
+        output   = "HDMI-A-1",
+        mode     = "1920x1080@60",
+        position = "0x0",
+        scale    = 1,
+    })
+
+    hl.monitor({
+        disabled = not config.internal,
+        output   = "eDP-1",
+        mode     = "2560x1440@165",
+        position = "0x1080",
+        scale    = 1.6,
+    })
+end
+
+setup_monitors();
 
 hl.config({
     xwayland = {
@@ -171,11 +186,11 @@ hl.config({
 
 hl.gesture({ fingers = 3, direction = "horizontal", action = "workspace" })
 
-hl.bind(mod .. " + S",
+hl.bind(mod .. " + CONTROL + S",
     hl.dsp.exec_cmd("hyprctl keyword workspace $(hyprctl activeworkspace -j| jq \".id\" ),layout:scrolling"))
-hl.bind(mod .. " + D",
+hl.bind(mod .. " + CONTROL + D",
     hl.dsp.exec_cmd("hyprctl keyword workspace $(hyprctl activeworkspace -j| jq \".id\" ),layout:dwindle"))
-hl.bind(mod .. " + M",
+hl.bind(mod .. " + CONTROL + M",
     hl.dsp.exec_cmd("hyprctl keyword workspace $(hyprctl activeworkspace -j| jq \".id\" ),layout:master"))
 
 hl.bind(mod .. " + SHIFT + P", hl.dsp.window.pin())
@@ -189,13 +204,9 @@ hl.bind(mod .. " + SPACE", function()
     hl.dispatch(hl.dsp.window.cycle_next({ tyled = floating, floating = not floating }))
 end)
 
-hl.bind(mod .. " + SHIFT + M",
-    hl.dsp.exec_cmd("hyprctl keyword monitor HDMI-A-1,1920x1080@60,0x0,1; hyprctl keyword monitor eDP-1,disable"))
-hl.bind(mod .. " + SHIFT + N",
-    hl.dsp.exec_cmd("hyprctl keyword monitor eDP-1,2560x1440@165,0x1080,1.6; hyprctl keyword monitor HDMI-A-1,disable"))
-hl.bind(mod .. " + SHIFT + B",
-    hl.dsp.exec_cmd(
-        "hyprctl keyword monitor eDP-1,2560x1440@165,0x1080,1.6; hyprctl keyword monitor HDMI-A-1,1920x1080@60,0x0,1"))
+hl.bind(mod .. " + SHIFT + M", function() setup_monitors({ external = true, internal = false }) end)
+hl.bind(mod .. " + SHIFT + N", function() setup_monitors({ external = false, internal = true }) end)
+hl.bind(mod .. " + SHIFT + B", function() setup_monitors() end)
 
 hl.bind(mod .. " + SHIFT + ALT + L", hl.dsp.exec_cmd("swaylock --color=000000 --show-failed-attempts"))
 
@@ -217,14 +228,20 @@ hl.bind(mod .. " + SHIFT + A", hl.dsp.exec_cmd("hyprshot -m region --raw | satty
 hl.bind(mod .. " + V", hl.dsp.exec_cmd("copyq show"))
 hl.bind(mod .. " + Return", hl.dsp.exec_cmd("ghostty"))
 hl.bind(mod .. " + Q", hl.dsp.window.close())
+-- TODO: remove when i buy an external keyboard
+hl.bind(mod .. " + C", hl.dsp.window.close())
 hl.bind(mod .. " + ALT + E",
     hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch exit"))
 hl.bind(mod .. " + SHIFT + SPACE", hl.dsp.window.float())
 hl.bind(mod .. " + O", hl.dsp.exec_cmd("fuzzel"))
+-- TODO: remove when i buy an external keyboard
+hl.bind(mod .. " + M", hl.dsp.exec_cmd("fuzzel"))
 hl.bind(mod .. " + E", hl.dsp.layout("togglesplit"))
 hl.bind(mod .. " + F", hl.dsp.window.fullscreen())
 hl.bind(mod .. " + SHIFT + F", hl.dsp.window.fullscreen())
 hl.bind(mod .. " + R", hl.dsp.submap("resize"))
+-- TODO: remove when i buy an external keyboard
+hl.bind(mod .. " + T", hl.dsp.submap("resize"))
 hl.define_submap("resize", function()
     hl.bind("L", hl.dsp.window.resize({ x = 10, y = 0, relative = true }), { repeating = true })
     hl.bind("H", hl.dsp.window.resize({ x = -10, y = 0, relative = true }), { repeating = true })
@@ -232,6 +249,8 @@ hl.define_submap("resize", function()
     hl.bind("J", hl.dsp.window.resize({ x = 0, y = -10, relative = true }), { repeating = true })
     hl.bind("escape", hl.dsp.submap("reset"))
     hl.bind(mod .. " + R", hl.dsp.submap("reset"))
+    -- TODO: remove when i buy an external keyboard
+    hl.bind(mod .. " + T", hl.dsp.submap("reset"))
 end)
 
 hl.bind("ALT + SHIFT + 1", hl.dsp.exec_cmd("hyprctl switchxkblayout main 0"))
