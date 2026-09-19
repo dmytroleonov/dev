@@ -47,7 +47,26 @@ local function setup_monitors(config)
     end
 end
 
-setup_monitors();
+local function enable_monitors()
+    if os.getenv("IS_HYPRLAND_CONFIG_EDIT") == nil then
+        hl.env("IS_HYPRLAND_CONFIG_EDIT", "true")
+        setup_monitors()
+        return
+    end
+
+    local internal = false
+    local external = false
+    for _, monitor in ipairs(hl.get_monitors()) do
+        if monitor.name == "eDP-1" then
+            internal = true
+        elseif monitor.name == "HDMI-A-1" then
+            external = true
+        end
+    end
+    setup_monitors({ internal = internal, external = external })
+end
+
+enable_monitors()
 
 hl.config({
     xwayland = {
