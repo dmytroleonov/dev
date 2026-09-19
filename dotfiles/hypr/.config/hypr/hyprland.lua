@@ -165,7 +165,7 @@ hl.config({
 hl.bind(mod .. " + period", hl.dsp.layout("swapcol r"))
 hl.bind(mod .. " + comma", hl.dsp.layout("swapcol l"))
 hl.bind(mod .. " + semicolon", hl.dsp.layout("fit visible"))
-hl.bind(mod .. " + P", hl.dsp.layout("promote"))
+hl.bind(mod .. " + P", hl.dsp.layout("swapwithmaster master"))
 hl.bind(mod .. " + SHIFT + R", hl.dsp.layout("colresize +conf"))
 
 hl.config({
@@ -223,13 +223,17 @@ hl.config({
 
 hl.gesture({ fingers = 3, direction = "horizontal", action = "workspace" })
 
-hl.bind(mod .. " + CONTROL + S",
-    hl.dsp.exec_cmd("hyprctl keyword workspace $(hyprctl activeworkspace -j| jq \".id\" ),layout:scrolling"))
-hl.bind(mod .. " + CONTROL + D",
-    hl.dsp.exec_cmd("hyprctl keyword workspace $(hyprctl activeworkspace -j| jq \".id\" ),layout:dwindle"))
-hl.bind(mod .. " + CONTROL + M",
-    hl.dsp.exec_cmd("hyprctl keyword workspace $(hyprctl activeworkspace -j| jq \".id\" ),layout:master"))
+local function dsp_set_layout(layout)
+    return function()
+        local ws = hl.get_active_workspace()
+        if not ws then return end
+        hl.workspace_rule({ workspace = ws.name, layout = layout })
+    end
+end
 
+hl.bind(mod .. " + CONTROL + S", dsp_set_layout("scrolling"))
+hl.bind(mod .. " + CONTROL + D", dsp_set_layout("dwindle"))
+hl.bind(mod .. " + CONTROL + M", dsp_set_layout("master"))
 hl.bind(mod .. " + SHIFT + P", hl.dsp.window.pin())
 hl.bind(mod .. " + SPACE", function()
     local window = hl.get_active_window()
