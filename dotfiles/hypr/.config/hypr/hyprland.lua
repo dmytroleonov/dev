@@ -12,21 +12,39 @@ local function setup_monitors(config)
     if config.internal == nil then config.internal = true end
     if config.external == nil then config.external = true end
 
-    hl.monitor({
-        disabled = not config.external,
-        output   = "HDMI-A-1",
-        mode     = "1920x1080@60",
-        position = "0x0",
-        scale    = 1,
-    })
-
-    hl.monitor({
+    ---@type HL.MonitorSpec
+    local internal_monitor = {
         disabled = not config.internal,
         output   = "eDP-1",
         mode     = "2560x1440@165",
         position = "0x1080",
         scale    = 1.6,
-    })
+    }
+    ---@type HL.MonitorSpec
+    local external_monitor = {
+        disabled = not config.external,
+        output   = "HDMI-A-1",
+        mode     = "1920x1080@60",
+        position = "0x0",
+        scale    = 1,
+    }
+
+
+    hl.monitor(internal_monitor)
+    hl.monitor(external_monitor)
+
+    local only_output = nil
+    if not config.internal then
+        only_output = external_monitor.output
+    end
+    if not config.external then
+        only_output = internal_monitor.output
+    end
+    if not only_output then return end
+
+    for _, ws in ipairs(hl.get_workspaces()) do
+        hl.dispatch(hl.dsp.workspace.move({ workspace = ws, monitor = only_output }))
+    end
 end
 
 setup_monitors();
