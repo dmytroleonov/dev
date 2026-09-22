@@ -2,4 +2,4 @@
 
 sudo pacman -S --noconfirm --needed telegram-desktop discord spotify-launcher \
     libreoffice-fresh
-yay -S visual-studio-code-bin
+yay -S --noconfirm visual-studio-code-bin google-chrome
