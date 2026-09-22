@@ -151,20 +151,24 @@ font_family = "JetBrainsMono Nerd Font Mono"
 
 [theme]
 builtin = "Catppuccin"
+mode = "dark"
+source = "builtin"
 
 [wallpaper]
 directory = "/home/leonovd/Pictures/walls"
-fill_mode = "fit"
 transition_on_startup = true
 
     [wallpaper.default]
-    path = "/home/leonovd/Pictures/walls/makima.png"
+    path = "/home/leonovd/Pictures/walls/asuka.jpg"
 
     [wallpaper.last]
-    path = "/home/leonovd/Pictures/walls/makima.png"
+    path = "/home/leonovd/Pictures/walls/asuka.jpg"
+
+    [wallpaper.monitors.HDMI-A-1]
+    path = "/home/leonovd/Pictures/walls/asuka.jpg"
 
     [wallpaper.monitors.eDP-1]
-    path = "/home/leonovd/Pictures/walls/makima.png"
+    path = "/home/leonovd/Pictures/walls/asuka.jpg"
 
 [widget.brightness]
 enabled = false
