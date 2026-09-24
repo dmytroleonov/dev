@@ -24,7 +24,7 @@ log() {
 execute() {
     echo "execute $@"
     if [[ $dry == "1" ]]; then
-	return
+        return
     fi
     "$@"
 }
@@ -34,10 +34,9 @@ scripts=$(find ./runs -maxdepth 1 -mindepth 1 -executable -type f)
 
 for script in $scripts; do
     if echo "$script" | grep -qv "$filter"; then
-	log "filtering $script"
+        log "filtering $script"
         continue
     fi
 
     execute $script
 done
-
