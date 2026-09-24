@@ -236,13 +236,9 @@ hl.bind(mod .. " + CONTROL + D", dsp_set_layout("dwindle"))
 hl.bind(mod .. " + CONTROL + M", dsp_set_layout("master"))
 hl.bind(mod .. " + SHIFT + P", hl.dsp.window.pin())
 hl.bind(mod .. " + SPACE", function()
-    local window = hl.get_active_window()
-    if not window then
-        return
-    end
-    local floating = window.floating
-
-    hl.dispatch(hl.dsp.window.cycle_next({ tyled = floating, floating = not floating }))
+    hl.dispatch(hl.dsp.window.cycle_next({
+        floating = not hl.get_active_window().floating
+    }))
 end)
 
 hl.bind(mod .. " + SHIFT + M", function() setup_monitors({ external = true, internal = false }) end)
@@ -339,7 +335,7 @@ hl.bind(mod .. " + SHIFT + J", hl.dsp.window.move({ direction = "d" }))
 hl.bind(mod .. " + SHIFT + K", hl.dsp.window.move({ direction = "u" }))
 hl.bind(mod .. " + SHIFT + L", hl.dsp.window.move({ direction = "r" }))
 
-hl.bind(mod .. " + X", function ()
+hl.bind(mod .. " + X", function()
     if hl.get_workspace("special:minimized") then
         hl.dispatch(hl.dsp.window.move({ workspace = hl.get_active_workspace(), window = "tag:minimized" }))
         hl.dispatch(hl.dsp.window.clear_tags({ window = "tag:minimized" }))
