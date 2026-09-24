@@ -6,6 +6,7 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 export GIT_EDITOR=nvim
+export EDITOR=nvim
 
 alias la="ls -A"
 alias gs="git status -u"
