@@ -275,7 +275,6 @@ hl.bind(mod .. " + O", hl.dsp.exec_cmd("fuzzel"))
 hl.bind(mod .. " + M", hl.dsp.exec_cmd("fuzzel"))
 hl.bind(mod .. " + E", hl.dsp.layout("togglesplit"))
 hl.bind(mod .. " + F", hl.dsp.window.fullscreen())
-hl.bind(mod .. " + SHIFT + F", hl.dsp.window.fullscreen())
 hl.bind(mod .. " + R", hl.dsp.submap("resize"))
 -- TODO: remove when i buy an external keyboard
 hl.bind(mod .. " + T", hl.dsp.submap("resize"))
