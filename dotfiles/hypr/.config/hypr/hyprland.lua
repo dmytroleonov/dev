@@ -17,7 +17,7 @@ local function setup_monitors(config)
         disabled = not config.internal,
         output   = "eDP-1",
         mode     = "2560x1440@165",
-        position = "0x1080",
+        position = "1920x0",
         scale    = 1.6,
     }
     ---@type HL.MonitorSpec
