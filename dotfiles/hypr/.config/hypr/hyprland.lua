@@ -254,7 +254,7 @@ hl.bind("ALT + SHIFT + H",
     hl.dsp.exec_cmd("hyprctl --batch \"dispatch movegroupwindow b; dispatch changegroupactive b\""))
 hl.bind("ALT + SHIFT + L",
     hl.dsp.exec_cmd("hyprctl --batch \"dispatch movegroupwindow f; dispatch changegroupactive f\""))
-hl.bind("ALT + I", hl.dsp.group.lock_active({ action = "toggle" }))
+hl.bind("ALT + I", hl.dsp.group.lock({ action = "toggle" }))
 hl.bind("ALT + U", hl.dsp.window.move({ out_of_group = true }))
 hl.bind("ALT + H", hl.dsp.window.move({ into_group = "left" }))
 hl.bind("ALT + J", hl.dsp.window.move({ into_group = "down" }))
